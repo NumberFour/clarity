@@ -19,7 +19,6 @@ package_rpm() {
     readonly BUILDROOT=$(mktemp -d)
     mkdir -p ${BUILDROOT}/{RPMS,SPECS,SOURCES,BUILD}
 
-    pwd
     cp pkg/*.gem "${BUILDROOT}/SOURCES/"
     cp clarity.spec "${BUILDROOT}/SPECS/"
     rpmbuild \
@@ -29,6 +28,7 @@ package_rpm() {
 
     find "${BUILDROOT}/RPMS" -type f -name '*.rpm' -exec cp '{}' "${BASEDIR}/pkg/" ';'
     rm -rf "${BUILDROOT}"
+    find "${BASEDIR}/pkg" -type f -name '*.rpm'
 }
 
 set -e

@@ -19,7 +19,7 @@ Requires: rubygems >= 1.3.7
 Requires: rubygem-eventmachine >= 0.12.10
 Requires: rubygem-eventmachine_httpserver >= 0.2.0
 Requires: rubygem-json >= 1.0.0
-Requires: rubygem-log4j >= 1.1.19
+Requires: rubygem-log4r >= 1.1.19
 Requires: rubygem-hoe => 2.12
 Requires: rubygem-hoe < 3
 Requires: /usr/sbin/start-stop-daemon

@@ -29,23 +29,19 @@ module Clarity
           a.relative_root = options[:relative_root] || ""
         end
 
-        STDERR.puts "Clarity #{Clarity::VERSION} starting up."
-        STDERR.puts " * listening on #{options[:address]}:#{options[:port]}"
+        $log.info "Clarity #{Clarity::VERSION} starting up."
+        $log.info " * listening on #{options[:address]}:#{options[:port]}"
 
         if options[:user]
-          STDERR.puts " * Running as user #{options[:user]}"
+          $log.info " * Running as user #{options[:user]}"
           EventMachine.set_effective_user(options[:user])
         end
 
-        STDERR.puts " * Log mask(s): #{options[:log_files].join(', ')}"
+        $log.info " * Log mask(s): #{options[:log_files].join(', ')}"
 
         if options[:username].nil? or options[:password].nil?
-          STDERR.puts " * WARNING: No username/password specified. This is VERY insecure."
+          $log.warn " * WARNING: No username/password specified. This is VERY insecure."
         end
-
-        STDERR.puts
-
-
       end
     end
 

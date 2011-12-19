@@ -12,7 +12,8 @@ module Clarity
         :address => "0.0.0.0",
         :user => nil,
         :group => nil,
-        :relative_root => nil
+        :relative_root => nil,
+        :syslog => false
       }
       
       mandatory_options = %w(  )
@@ -51,6 +52,9 @@ module Clarity
           options[:user] = opt
         end
         
+        opts.on( "--syslog", "Log to syslog" ) do
+          options[:syslog] = true
+        end
         opts.separator " "
         opts.separator "Password protection:"
 
@@ -74,8 +78,9 @@ module Clarity
 
         begin
           opts.parse!(arguments)
-   
           options[:log_files] ||= ['**/*.log*']
+
+          Clarity::Log::configure(options)
           
           if arguments.first
             Dir.chdir(arguments.first)

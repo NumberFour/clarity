@@ -60,6 +60,13 @@ http://img.skitch.com/20091104-je9kq1a2gfr586ia8y246bq4n8.png
 
   * sudo gem install clarity
 
+== BUILD RPM:
+
+A script is included to generate a .rpm for CentOS/ScientificLinux.
+First the .gem is build and then converted into a .rpm.
+
+  * ./script/package-rpm
+
 == LICENSE:
 
 (The MIT License)

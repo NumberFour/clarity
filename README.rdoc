@@ -5,7 +5,7 @@
 == DESCRIPTION:
 
 Clarity - a log search tool
-By John Tajima & Tobi Lütke
+By John Tajima & Tobi Lütke & Jens Bräuer
 
 Clarity is a Splunk like web interface for your server log files. It supports 
 searching (using grep) as well as trailing log files in realtime. It has been written 
@@ -41,6 +41,7 @@ that clarity isn't reachable by the outside world. At the very least use --usern
           --username=USER              Enable httpauth username
           --password=PASS              Enable httpauth password   
   Misc:
+      --syslog                         Log to syslog
       -h, --help                       Show this message.
   
 
@@ -53,6 +54,7 @@ http://img.skitch.com/20091104-je9kq1a2gfr586ia8y246bq4n8.png
   * eventmachine
   * eventmachine_httpserver
   * json
+  * log4j
 
 == INSTALL:
 

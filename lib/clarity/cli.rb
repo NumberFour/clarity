@@ -85,6 +85,8 @@ module Clarity
 
           Dir.chdir(arguments.first)
           ::Clarity::Server.run(options)
+          $log.info "Clarity done".
+
         rescue OptionParser::ParseError => e
           warn opts
           warn e

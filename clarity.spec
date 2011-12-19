@@ -32,15 +32,15 @@ Provides: ruby(Numberfour-clarity) = %{version}
 %description
 Clarity - a log search tool
 By John Tajima & Tobi Lütke & Jens Bräuer
-Clarity is a Splunk like web interface for your server log files. It supports 
+Clarity is a Splunk like web interface for your server log files. It supports
 searching (using grep) as well as trailing log files in realtime. It has been
-written 
+written
 using the event based architecture based on EventMachine and so allows
 real-time search
-of very large log files. If you hit the browser Stop button it will also kill 
-the grep / tail utility. 
+of very large log files. If you hit the browser Stop button it will also kill
+the grep / tail utility.
 We wrote Clarity to allow our support staff to use a simple interface to look
-through the various log files in our server farm. The application was such a 
+through the various log files in our server farm. The application was such a
 big success internally that we decided to release it as open source.
 
 %prep
@@ -57,7 +57,7 @@ mv %{gembuilddir}/bin/* %{buildroot}/%{_bindir}
 rmdir %{gembuilddir}/bin
 
 mkdir -p %{buildroot}/etc/rc.d/init.d/
-mv %{buildroot}/%{_bindir}/clarity.init %{buildroot}/etc/rc.d/init.d/clarity
+mv %{gembuilddir}/gems/%{rbname}-%{version}/script/clarity.init %{buildroot}/etc/rc.d/init.d/clarity
 
 mkdir -p %{buildroot}/etc/
 cp %{gembuilddir}/gems/%{rbname}-%{version}/config/config.yml.sample %{buildroot}/etc/clarity.conf

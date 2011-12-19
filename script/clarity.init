@@ -13,7 +13,7 @@ DAEMON=/usr/bin/clarity
 PIDFILE=/var/run/clarity.pid
 SUBSYS=/var/lock/subsys/clarity
 START_STOP_OPTS=""
-DAEMON_ARGS="-f /etc/clarity.conf /var/log"
+DAEMON_ARGS="-f /etc/clarity.conf --syslog /var/log"
 
 start() {
     echo "Starting $NAME ($DAEMON): "

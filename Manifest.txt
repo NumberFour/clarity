@@ -4,6 +4,7 @@ PostInstall.txt
 README.rdoc
 Rakefile
 bin/clarity
+bin/clarity.init
 config/config.yml.sample
 lib/clarity.rb
 lib/clarity/cli.rb

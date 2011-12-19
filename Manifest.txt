@@ -8,6 +8,7 @@ script/clarity.init
 config/config.yml.sample
 lib/clarity.rb
 lib/clarity/cli.rb
+lib/clarity/log.rb
 lib/clarity/commands/grep_command_builder.rb
 lib/clarity/commands/hostname_command_builder.rb
 lib/clarity/commands/tail_command_builder.rb

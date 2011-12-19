@@ -1,0 +1,41 @@
+#! /bin/bash
+
+log() {
+    echo "$@"
+}
+
+usage() {
+    log "$0 - a script to package as rpm"
+    log "Options:"
+    log " -d - do package the rpm"
+}
+
+package_gem() {
+    rm -rf pkg
+    rake package
+}
+
+package_rpm() {
+    readonly BUILDROOT=$(mktemp -d)
+    mkdir -p ${BUILDROOT}/{RPMS,SPECS,SOURCES,BUILD}
+
+    pwd
+    cp pkg/*.gem "${BUILDROOT}/SOURCES/"
+    cp clarity.spec "${BUILDROOT}/SPECS/"
+    rpmbuild \
+	--define "_topdir ${BUILDROOT}" \
+	--define "_rpmdir ${BUILDROOT}/RPMS" \
+	-bb "${BUILDROOT}/SPECS/clarity.spec"
+
+    find "${BUILDROOT}/RPMS" -type f -name '*.rpm' -exec cp '{}' "${BASEDIR}/pkg/" ';'
+    rm -rf "${BUILDROOT}"
+}
+
+set -e
+
+readonly BASEDIR="$(dirname $(readlink -f "$0"))/.."
+cd "${BASEDIR}"
+
+package_gem
+package_rpm
+

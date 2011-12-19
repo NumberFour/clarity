@@ -93,6 +93,7 @@ module Clarity
           msg = "#{e.message} // #{e.class} \n\t#{e.backtrace.join("\n\t")}"
           $log.error msg if defined?($log)
           warn msg
+          exit 2
         end
       end
     end

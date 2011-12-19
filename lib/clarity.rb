@@ -18,8 +18,8 @@ require 'clarity/commands/hostname_command_builder'
 require 'clarity/renderers/log_renderer'
 
 module Clarity
-  VERSION = '0.9.9'  
-  
+  VERSION = '0.9.10'
+
   Templates = File.expand_path(File.dirname(__FILE__) + '/../views')
   Public    = File.expand_path(File.dirname(__FILE__) + '/../public')
 end

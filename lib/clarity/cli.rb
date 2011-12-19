@@ -81,19 +81,20 @@ module Clarity
           options[:log_files] ||= ['**/*.log*']
 
           Clarity::Log::configure(options)
-          
-          if arguments.first
-            Dir.chdir(arguments.first)
-            
-            ::Clarity::Server.run(options)
-            
-          else
-            puts opts
-            exit(1)
-          end
+          raise OptionParser::InvalidArgument.new("Directory missing") unless arguments.first
+
+          Dir.chdir(arguments.first)
+          ::Clarity::Server.run(options)
+        rescue OptionParser::ParseError => e
+          warn opts
+          warn e
+          exit 1
+        rescue RuntimeError => e
+          msg = "#{e.message} // #{e.class} \n\t#{e.backtrace.join("\n\t")}"
+          $log.error msg if defined?($log)
+          warn msg
         end
       end
-            
     end
   end
 end
